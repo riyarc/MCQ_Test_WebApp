@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+{% block content %}
+	
+	<h2> Test Completed </h4>
+	<a href={% url 'score' test_id %} > Check Score </a>
+
+
+	
+{% endblock %}

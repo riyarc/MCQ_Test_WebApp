@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+{% block content %}
+	<div class="container" style="font-size: 25px">
+		<div class="row" style="margin-bottom: 50px">
+			<div class='col-12 text-center' style="font-size: 30px; font-weight: 600">
+				Score: {{score}}
+			</div>
+			<div class='col-12 text-center' style="font-size: 30px; color: green">
+				Correct answers : {{ correct_ans }} / {{ total_ques }}
+			</div>
+			<div class='col-12 text-center' style="font-size: 30px; color: red">
+				Wrong answers : {{ wrong_ans }} / {{ total_ques }}
+			</div>
+		</div>
+		{% for i, question, user_answer_code, user_answer, real_answer in solutions %}
+			<div class="row">
+				<div class='col-12'>
+					{{ i }}. {{ question }}
+				</div>
+				<div class='col-12' style="padding-left: 50px">
+					{% if question.answer == user_answer_code %}
+						<span style="color: green">{{ user_answer }}</span>
+					{% else %}
+						<span style="color: red; text-decoration: line-through">{{ user_answer }}</span><br><span style="color: green">{{ real_answer }}</span>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

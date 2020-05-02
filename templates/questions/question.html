@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{title}}
+{% endblock title %}
+
+{% block content %}
+<div class="timer" style="position: absolute; top: 8%; left: 50%; transform: translate(-50%, 0%); font-size: 30px; color: red; font-weight: 500;">
+		<span class="glyphicon glyphicon-time"></span> <span class="hours"></span>:<span class="minutes"></span>:<span class="seconds"></span>
+	</div>
+    {% if request.user.is_authenticated %}
+
+        <div class="row">
+  <div class="col-sm-8" style="font-size: 18px;">
+
+		<h2 style="font-size: 40px; font-weight: 600;">{{ id }}. {{question.question_text}}</h2>
+		<form class="answer-form" name="answer-form">
+			<input type="radio" name="answer" value="c0" {% if answer == "c0" %} 
+															checked 
+														 {% endif %} style="color: gray;"> 
+			Remove Selection
+			<br>
+			<input type="radio" name="answer" value="c1" {% if answer == "c1" %} 
+															checked 
+														 {% endif %} > 
+			{{question.c1}} 
+			<br>
+			<input type="radio" name="answer" value="c2" {% if answer == "c2" %}
+															checked
+														 {% endif %} > 
+			{{question.c2}}
+			<br>
+			<input type="radio" name="answer" value="c3" {% if answer == "c3" %}
+															checked
+														 {% endif %} > 
+			{{question.c3}}
+			<br>
+			<input type="radio" name="answer" value="c4" {% if answer == "c4" %}
+															checked
+														 {% endif %} > 
+			{{question.c4}}
+			<br>
+		</form>
+	{% endif %}
+
+	<br>
+
+	{% if id != '1' %}
+	<a href="{% url 'contest_que' test_id id|add:"-1" %}">
+		<button type="button" class="pre btn btn-default" > <span class="glyphicon glyphicon-arrow-left"></span> Previous
+		</button>
+	</a>
+	{% endif %}
+
+	{% if id != total|slugify %}
+		<a href="{% url 'contest_que' test_id id|add:"1" %}">
+			<button type="button" class="next btn btn-default" > Next  <span class="glyphicon glyphicon-arrow-right"></span>
+			</button>	
+		</a>
+	
+	{% else %}
+		<a href="{% url 'test_completed' test_id  %}">
+            <button type="button" class="submit btn btn-default" style="background-color: #092E20; color: whitesmoke" onclick="show_alert();"  > Submit  <span class="glyphicon glyphicon-arrow-right"></span>
+			</button>	
+		</a>
+	{% endif%}
+</div>
+  <div class="col-sm-4" style="background-color:white; padding-left: 4%; margin: 0% 0%; height: 100vh; border-left: 2px solid black;">
+
+	<div class="container-fluid">
+		<div class="row">
+			{%for i, ques, ans in merged_list %}
+				<div class="col-sm-3 text-center">
+					<div style="width: 100%; height: 100% ;padding: 2%; margin: 0% 0%; border: 2px solid black; border-radius: 25px;
+			background-color:  {% ifequal ans 'c0' %} silver {% else %} {% endifequal %}
+								{% ifequal ans 'c' %} silver {% else %} {% endifequal %}
+								{% ifequal ans 'c1' %} #00B200 {% else %} {% endifequal %}
+								{% ifequal ans 'c2' %} #00B200 {% else %} {% endifequal %}
+								{% ifequal ans 'c3' %} #00B200 {% else %} {% endifequal %}
+								{% ifequal ans 'c4' %} #00B200 {% else %} {% endifequal %}">
+						<h4 style="width: 100% ;">
+							<a href={% url  'contest_que' test_id forloop.counter %} style="width: 100% ;">
+								<span style="font-size: medium;padding: 1% 5%; width: inherit;
+										color: 
+										{% ifequal ans 'c' %} gray {% else %} black {% endifequal %};">
+									{{ i }}
+									
+									{% ifequal ans 'c0' %} {% else %}{% ifequal ans 'c' %} {% else %}<span style="font-size: medium;" class="glyphicon glyphicon-ok-sign"></span> {% endifequal %}{% endifequal %}
+								</span>
+							</a>
+						</h4>
+					</div>
+				</div>
+			{%endfor%}
+		</div>
+	</div>
+    
+		
+
+    
+	</div>
+</div>
+<a href=""></a>
+
+{% endblock %}
+
+
+{% block script %}
+	<script>
+
+		function showTime(time){
+			var hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((time % (1000 * 60)) / 1000);
+			console.log(hours, minutes, seconds)
+		}
+		// Set the date we're counting down to
+		var countDownDate = new Date("{{ expiry_age }}").getTime();
+		console.log("{{ expiry_age }}");
+		console.log(countDownDate);
+		showTime(countDownDate);
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+			// Get today's date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+			if(distance<0){
+				window.location.replace("http://127.0.0.1:8000/tests/{{ test_id }}/testcompleted/");
+
+			}
+			// window.location.replace("http://127.0.0.1:8000/tests/{{ test_id }}/testcompleted/");
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			// console.log({{ expiry_age }});
+			document.querySelector('.hours').innerText = hours;
+			document.querySelector('.minutes').innerText = minutes;
+			document.querySelector('.seconds').innerText = seconds;
+
+			// Display the result in the element with id="demo"
+			// document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+			// + minutes + "m " + seconds + "s ";
+
+			// If the count down is finished, write some text
+			// if (distance < 0) {
+			// 	clearInterval(x);
+			// 	document.getElementById("demo").innerHTML = "EXPIRED";
+			// }
+		}, 1000);
+	</script>
+{% endblock %}
