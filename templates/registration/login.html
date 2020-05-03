@@ -4,16 +4,18 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content1 %}
-
-    <form method="post" action="">
+<div style="background: #e0eaf2;; color:black; padding-bottom: 2%; border-radius:5px; margin-top: 25%;" >
+    <h1 style="color: #e6f5ef; padding-top: 2% ;padding-bottom: 2%; border-style: solid;margin: 0 0 0 0;border-color:#2b2a2b; background-color: #274259">LOGIN</h1>
+    <form method="post" action="" style="padding-top: 5%; padding-right:5%;padding-left:5%; padding-bottom:2%; color : black" >
         {% csrf_token %}
         {{ form|crispy }}
-        <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
+        <input class="btn btn-primary" style="background: #274259; border-color: #274259; color: white" type="submit" value="{% trans 'Log in' %}" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
-    <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-    <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+    <p>{% trans "Forgot your password?" %} <a style="color: grey "href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
+    <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}" style="color: grey ">{% trans "Register" %}</a>.</p>
+</div>
 
 {% endblock %}
 
