@@ -4,20 +4,60 @@
 	{{title}}
 {% endblock title %}
 {% block content %}
-	
-		{%for question in questions %}
-			
+
+		<!-- {%for question in questions %}
+
 
 		<div>
      	 <h4><a href={% url  'contest_que' test_id forloop.counter %}>{{ question.question_text }}  </a>
-   		</h4>  
-   		</div>  
-   	
-   	    {%endfor%}
+   		</h4>
+   		</div>
 
-	<a href="{% url 'contest_que' test_id curr_id %}  "> 
+   	    {%endfor%} -->
+<!--
+	<a href="{% url 'contest_que' test_id curr_id %}  ">
 		<button type="button" class="pre btn btn-default" >  Start Test
 		</button>
-	</a>
-	
+	</a> -->
+
+	<div class="jumbotron" style="background-image: linear-gradient(to bottom right, #608fb9,#b4e3f7, #608fb9);
+	width: 50%;
+	position: relative;
+	margin-left: 25%;
+	 margin-top: 10%;">
+		<h2 class="text-center" style="position: relative;
+		margin: auto  30px 30px 5%;
+		padding: 0px 0 0px 0px;
+		color: black;
+		font-size: 30px;
+		font-weight: 400;">Click the button below once you are ready to start the test.</h2>
+
+		<hr style="border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);">
+
+		<h3 class="text-center">ALERT</h3>
+		<ul>
+			<li style="position: relative;
+			margin: auto  30px 0 15%;
+			padding: 0px 0 0px 0px;
+			color: black;
+			font-size: 15px;
+			font-weight: 200;">Once you click the button timer will start automatically</li>
+			<li style="position: relative;
+			margin: auto  30px 0 15%;
+			padding: 0px 0 0px 0px;
+			color: black;
+			font-size: 15px;
+			font-weight: 200;">You cannot go back without submitting the test</li>
+		</ul>
+
+		<br>
+
+		<a class="btn btn-lg btn-success" href="{% url 'contest_que' test_id curr_id %}  " style="margin-left : 40%;background-color: #274259; color: white">
+			 Start Test</a>
+
+	</div>
+
 {% endblock %}

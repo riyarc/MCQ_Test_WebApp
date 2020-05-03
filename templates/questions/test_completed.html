@@ -4,10 +4,34 @@
 	{{title}}
 {% endblock title %}
 {% block content %}
-	
-	<h2> Test Completed </h4>
-	<a href={% url 'score' test_id %} > Check Score </a>
+
+<div class="jumbotron" style="
+background-image: linear-gradient(to bottom right, #608fb9,#b4e3f7, #608fb9);
+width: 50%;
+position: relative;
+margin-left: 25%;
+margin-top: 12%">
+<h2 style="position: relative;
+margin: auto  30px 30px 23%;
+padding: 0px 0 0px 0px;
+color: black;
+font-size: 32px;
+font-weight: 600;
+text-transform: uppercase;"> Test Completed </h2>
+
+<h2 style="position: relative;
+margin: auto  30px 30px 5%;
+padding: 0px 0 0px 0px;
+color: black;
+font-size: 25px;
+font-weight: 400;"> Click the button below to check your Scores.</h2>
+
+<a class="btn btn-lg btn-success" href={% url 'score' test_id %} role="button" style="margin-left : 35%; background:#274158; color: white"> View Score Card </a>
+</div>
+
+	<!-- <h2> Test Completed </h4>
+	<a href={% url 'score' test_id %} > Check Score </a> -->
 
 
-	
+
 {% endblock %}

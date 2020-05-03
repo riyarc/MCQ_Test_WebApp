@@ -4,13 +4,41 @@
 	{{title}}
 {% endblock title %}
 {% block content %}
-	{%for test in tests %} 
-		<div>
-     	 <h4><a href={% url 'test_details' test_id=test.test_id %}>{{ test.name }}  </a>
-   		</h4>  
-   		</div>  
+	{%for test in tests %}
+		<div class="jumbotron" style="
+		width: 50%;
+		background-image: linear-gradient(to bottom right, #608fb9,#b4e3f7, #608fb9);
+		position: relative;
+		margin-left: 25%;
+		 margin-top: 10%;">
+			<h2 style="position: relative;
+			margin: auto  30px 30px 10%;
+			padding: 0px 0 0px 0px;
+			color: #274259;
+			font-size: 32px;
+			font-weight: 600;
+			text-transform: uppercase;">Tests availaible to attempt</h2>
+			<hr style="border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);">
+
+
+			<h2 style="position: relative;
+			margin: auto  30px 30px 15%;
+			padding: 0px 0 0px 0px;
+			color: #274259;
+			font-size: 22px;
+			font-weight: 300;"> Click on the link below to go to the test page.</h2>
+
+
+     	<h4>
+				 <a class="btn btn-lg btn-success" href= {% url 'test_details' test_id=test.test_id %} style="margin-left : 35%;
+				 font-size: 30px; background-color: #274259; color: white">{{ test.name }}  </a>
+   		</h4>
+   	</div>
 
    {%endfor%}
 
-	
+
 {% endblock %}

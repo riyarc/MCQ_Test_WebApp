@@ -5,40 +5,79 @@
 {% endblock title %}
 
 {% block content %}
-<div class="timer" style="position: absolute; top: 8%; left: 50%; transform: translate(-50%, 0%); font-size: 30px; color: red; font-weight: 500;">
+<div class="timer" style="position: absolute; top: 12%; left: 80%; transform: translate(-50%, 0%); font-size: 30px; color: red; font-weight: 500;">
 		<span class="glyphicon glyphicon-time"></span> <span class="hours"></span>:<span class="minutes"></span>:<span class="seconds"></span>
 	</div>
+	<div class="" style="position: absolute; top: 6%; left: 75%;">
+		<h3>Time Remaining</h3>
+	</div>
+
     {% if request.user.is_authenticated %}
 
-        <div class="row">
-  <div class="col-sm-8" style="font-size: 18px;">
+        <div class="row" style="margin-top: 10%;">
+  <div class="col-sm-8" style="font-size: 18px;
+	background-color: white;
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-top: 1%;
+	width: 50%;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 10px;
+	border-color:#274158">
 
-		<h2 style="font-size: 40px; font-weight: 600;">{{ id }}. {{question.question_text}}</h2>
-		<form class="answer-form" name="answer-form">
-			<input type="radio" name="answer" value="c0" {% if answer == "c0" %} 
-															checked 
-														 {% endif %} style="color: gray;"> 
-			Remove Selection
-			<br>
-			<input type="radio" name="answer" value="c1" {% if answer == "c1" %} 
-															checked 
-														 {% endif %} > 
-			{{question.c1}} 
-			<br>
-			<input type="radio" name="answer" value="c2" {% if answer == "c2" %}
+	<div class="" style="
+	background-color: #8acbe7;
+	border-radius: 30px;
+	margin-bottom: 0.5% ;
+	margin-top: 1%;
+	border-style: solid;
+	border-color: #274158">
+		<h2 style="font-size: 40px; font-weight: 500; padding-top:0.5%; padding-bottom:0.5%;" class="text-center">{{ id }}. {{question.question_text}}</h2>
+	</div>
+
+
+		<br>
+		<form class="answer-form" name="answer-form" style="padding-left: 15%; padding-right: 15%; ">
+			<div class="" style="border-radius: 3px;background-color: #bfe0ef; padding-left: 10%;margin-bottom: 0.5%">
+				<input type="radio" name="answer" value="c0" {% if answer == "c0" %}
+																checked
+															 {% endif %} style="color: gray;">
+				Remove Selection
+			</div>
+			<!-- <input type="radio" name="answer" value="c0" {% if answer == "c0" %}
 															checked
-														 {% endif %} > 
-			{{question.c2}}
-			<br>
-			<input type="radio" name="answer" value="c3" {% if answer == "c3" %}
-															checked
-														 {% endif %} > 
-			{{question.c3}}
-			<br>
-			<input type="radio" name="answer" value="c4" {% if answer == "c4" %}
-															checked
-														 {% endif %} > 
-			{{question.c4}}
+														 {% endif %} style="color: gray;">
+			Remove Selection -->
+
+			<div class="" style="border-radius: 3px;background-color: #bfe0ef; padding-left: 10%; margin-bottom: 0.5%">
+
+				<input type="radio" name="answer" value="c1" {% if answer == "c1" %}
+																checked
+															 {% endif %} >
+				{{question.c1}}
+			</div>
+
+			<div class="" style="border-radius: 3px;background-color: #bfe0ef; padding-left: 10% ;margin-bottom: 0.5%">
+				<input type="radio" name="answer" value="c2" {% if answer == "c2" %}
+																checked
+															 {% endif %} >
+				{{question.c2}}
+			</div>
+
+			<div class="" style="border-radius: 3px;background-color: #bfe0ef; padding-left: 10% ;margin-bottom: 0.5%">
+				<input type="radio" name="answer" value="c3" {% if answer == "c3" %}
+																checked
+															 {% endif %} >
+				{{question.c3}}
+			</div>
+
+			<div class="" style="border-radius: 3px;background-color: #bfe0ef; padding-left: 10% ;margin-bottom: 0.5%">
+				<input type="radio" name="answer" value="c4" {% if answer == "c4" %}
+																checked
+															 {% endif %} >
+				{{question.c4}}
+			</div>
 			<br>
 		</form>
 	{% endif %}
@@ -47,45 +86,56 @@
 
 	{% if id != '1' %}
 	<a href="{% url 'contest_que' test_id id|add:"-1" %}">
-		<button type="button" class="pre btn btn-default" > <span class="glyphicon glyphicon-arrow-left"></span> Previous
+		<button type="button" class="pre btn btn-lg btn-success" style="margin-bottom: 3%; margin-left:30%; width :20%; background: #274259; border-color: #274259; color: white: #3a4f46">  PREVIOUS
 		</button>
 	</a>
 	{% endif %}
 
 	{% if id != total|slugify %}
 		<a href="{% url 'contest_que' test_id id|add:"1" %}">
-			<button type="button" class="next btn btn-default" > Next  <span class="glyphicon glyphicon-arrow-right"></span>
-			</button>	
+			<button type="button" class="next btn btn-lg btn-success" style="margin-bottom: 3%; margin-left:35%; width: 20%;background: #274259; border-color: #274259; color: white: #3a4f46"> NEXT
+			</button>
 		</a>
-	
+
 	{% else %}
 		<a href="{% url 'test_completed' test_id  %}">
-            <button type="button" class="submit btn btn-default" style="background-color: #092E20; color: whitesmoke" onclick="show_alert();"  > Submit  <span class="glyphicon glyphicon-arrow-right"></span>
-			</button>	
+            <button type="button" class="submit btn btn-lg btn-success"  onclick="show_alert();"  style="margin-bottom: 3%;width :20%; background: #274259; border-color: #274259; color: white"> SUBMIT
+			</button>
 		</a>
 	{% endif%}
+	<br>
 </div>
-  <div class="col-sm-4" style="background-color:white; padding-left: 4%; margin: 0% 0%; height: 100vh; border-left: 2px solid black;">
-
+<div>
+	<div style="background: #274259;; border-style: solid;border-color: black; color: white" class="col-sm-4" b>
+  <h2> QUESTION BANK  </h2>
+  <h6>(Navigate through questions by clicking on them)</h6>
+  </div>
+  <div class="col-sm-4" style="background-image: linear-gradient(to bottom left, #608fb9,#b4e3f7, #608fb9);
+  padding-left: 4%;
+  margin: 0% 0%;
+  height: 400px;
+  border: 2px solid black;
+  border-radius: 5px">
 	<div class="container-fluid">
 		<div class="row">
 			{%for i, ques, ans in merged_list %}
 				<div class="col-sm-3 text-center">
-					<div style="width: 100%; height: 100% ;padding: 2%; margin: 0% 0%; border: 2px solid black; border-radius: 25px;
-			background-color:  {% ifequal ans 'c0' %} silver {% else %} {% endifequal %}
-								{% ifequal ans 'c' %} silver {% else %} {% endifequal %}
-								{% ifequal ans 'c1' %} #00B200 {% else %} {% endifequal %}
-								{% ifequal ans 'c2' %} #00B200 {% else %} {% endifequal %}
-								{% ifequal ans 'c3' %} #00B200 {% else %} {% endifequal %}
-								{% ifequal ans 'c4' %} #00B200 {% else %} {% endifequal %}">
+					<div style="width: 75%; height: 60px ;padding: 2%; margin: 15% 0%; border: 1px solid #2a2b2a; border-radius: 10px;
+			background-color:  {% ifequal ans 'c0' %} white {% else %} {% endifequal %}
+								{% ifequal ans 'c' %} white {% else %} {% endifequal %}
+								{% ifequal ans 'c1' %} #274259 {% else %} {% endifequal %}
+								{% ifequal ans 'c2' %} #274259 {% else %} {% endifequal %}
+								{% ifequal ans 'c3' %} #274259 {% else %} {% endifequal %}
+								{% ifequal ans 'c4' %} #274259 {% else %} {% endifequal %}">
 						<h4 style="width: 100% ;">
 							<a href={% url  'contest_que' test_id forloop.counter %} style="width: 100% ;">
-								<span style="font-size: medium;padding: 1% 5%; width: inherit;
-										color: 
-										{% ifequal ans 'c' %} gray {% else %} black {% endifequal %};">
+								<span style="font-size: medium; width: inherit; padding-top: 50%;
+										color:
+										{% ifequal ans 'c0' %} #274259 {% else %} white {% endifequal %}
+										{% ifequal ans 'c' %} #274259 {% else %} white {% endifequal %};">
 									{{ i }}
-									
-									{% ifequal ans 'c0' %} {% else %}{% ifequal ans 'c' %} {% else %}<span style="font-size: medium;" class="glyphicon glyphicon-ok-sign"></span> {% endifequal %}{% endifequal %}
+
+									{% ifequal ans 'c0' %} {% else %}{% ifequal ans 'c' %} {% else %}<span style="font-size: medium;" ></span> {% endifequal %}{% endifequal %}
 								</span>
 							</a>
 						</h4>
@@ -94,11 +144,12 @@
 			{%endfor%}
 		</div>
 	</div>
-    
-		
 
-    
+
+
+
 	</div>
+</div>
 </div>
 <a href=""></a>
 

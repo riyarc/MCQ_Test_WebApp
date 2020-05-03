@@ -5,8 +5,19 @@
 {% endblock title %}
 
 {% block content %}
-	<div class="container" style="font-size: 25px">
-		<div class="row" style="margin-bottom: 50px">
+	<div class="container" style="
+	font-size: 25px;
+	margin-top: 7%;">
+	<div style="
+	background-image:linear-gradient(to bottom, #ffffff,#d3f2ff, #ffffff);
+	border-style: solid;
+	border-color: black;
+	width: 50%;
+	position: center;
+	margin-left: 20%" >
+		<h1 class="text-center" style="color: #e6f5ef; padding-top: 2% ;padding-bottom: 2%; border-style: solid;margin: 0 0 0 0;border-color:#2b2a2b; background-color: #274259">SCORE CARD</h1>
+
+		<div class="row" style="margin-bottom: 50px ;padding-top: 2%">
 			<div class='col-12 text-center' style="font-size: 30px; font-weight: 600">
 				Score: {{score}}
 			</div>
@@ -17,19 +28,34 @@
 				Wrong answers : {{ wrong_ans }} / {{ total_ques }}
 			</div>
 		</div>
+	</div>
+	<h2 class="text-center" style="color: #e6f5ef; padding-top: 1% ;padding-bottom: 1%; border-style: solid;margin: 0 0 0 0;border-color:#2b2a2b; background-color: #274259; margin-top: 3%">ATTEMPT REVIEW</h2>
+	<div style="background-image:linear-gradient(to bottom, #ffffff,#d3f2ff, #ffffff);">
 		{% for i, question, user_answer_code, user_answer, real_answer in solutions %}
-			<div class="row">
-				<div class='col-12'>
-					{{ i }}. {{ question }}
+			<div class="row" >
+				<div class='col-12' style="padding-left: 2%">
+					<h3>{{ i }}. {{ question }}</h3>
 				</div>
+				<h3>
 				<div class='col-12' style="padding-left: 50px">
+					<span>Your Answer:
 					{% if question.answer == user_answer_code %}
 						<span style="color: green">{{ user_answer }}</span>
 					{% else %}
-						<span style="color: red; text-decoration: line-through">{{ user_answer }}</span><br><span style="color: green">{{ real_answer }}</span>
+						<span style="color: red; ">{{ user_answer }}</span>
 					{% endif %}
+					<br>
+					<span>Correct Answer:
+					<span style="color: green">{{ real_answer }}</span>
+					</span>
 				</div>
+			    </h3>
+			    <hr style="border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);">
 			</div>
 		{% endfor %}
+	</div>
 	</div>
 {% endblock %}
