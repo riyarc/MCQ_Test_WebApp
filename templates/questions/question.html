@@ -84,6 +84,15 @@
 
 	<br>
 
+	{% if id == '1' %}
+		<a href="{% url 'contest_que' test_id id|add:"1" %}">
+			<button type="button" class="next btn btn-lg btn-success" style="margin-bottom: 3%; margin-left:35%; width: 20%;background: #274259; border-color: #274259; color: white: #3a4f46"> NEXT
+			</button>
+		</a>
+
+	{% endif %}
+
+
 	{% if id != '1' %}
 	<a href="{% url 'contest_que' test_id id|add:"-1" %}">
 		<button type="button" class="pre btn btn-lg btn-success" style="margin-bottom: 3%; margin-left:30%; width :20%; background: #274259; border-color: #274259; color: white: #3a4f46">  PREVIOUS
@@ -92,10 +101,12 @@
 	{% endif %}
 
 	{% if id != total|slugify %}
+		{% if id != '1' %}
 		<a href="{% url 'contest_que' test_id id|add:"1" %}">
-			<button type="button" class="next btn btn-lg btn-success" style="margin-bottom: 3%; margin-left:35%; width: 20%;background: #274259; border-color: #274259; color: white: #3a4f46"> NEXT
+			<button type="button" class="next btn btn-lg btn-success" style="margin-bottom: 3%; width: 20%;background: #274259; border-color: #274259; color: white: #3a4f46"> NEXT
 			</button>
 		</a>
+		{% endif%}
 
 	{% else %}
 		<a href="{% url 'test_completed' test_id  %}">
