@@ -21,6 +21,8 @@ cd MCQ_Test_WebApp
 ```
  pip install -r requirements.txt
  python manage.py migrate
+ python manage.py makemigrations
+ python manage.py migrate
  ```
  
 3. Start server using this command in terminal 
