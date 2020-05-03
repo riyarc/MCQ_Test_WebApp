@@ -17,6 +17,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap3/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <script src="https://kit.fontawesome.com/79b0a86096.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,19 +26,19 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background-image:linear-gradient(to bottom, #ffffff,#f1fbff, #ffffff);">
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default" style="background-color:#092E20; color: white">
+<nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container">
         <!-- <img src="{% static 'site/iiita.png' %}" style="height:30px;"> -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-hamburger" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="color: whitesmoke" href="{% url 'index' %}">Examination Portal</a>
+            <a class="navbar-brand" style="color: whitesmoke" href="{% url 'index' %}"><span><img src="{% static 'site/iiita.png' %}" height="30px"></span>Examination Portal</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="color: whitesmoke">
             <ul class="nav navbar-nav" style="color: whitesmoke">
@@ -49,17 +50,16 @@
             <ul class="nav navbar-nav navbar-right" style="color: silver">
              {% if request.user.is_authenticated %}
                 <li><a href="#" style="color: silver"><i>{{ request.user }}</i></a></li>
-                <li><a href="{%  url  'auth_logout'  %}?next=/" style="color: silver">Logout</a></li>
+                <li><a href="{%  url  'auth_logout'  %}?next=/" style="color: silver"><i class="fas fa-user-minus"></i> Logout</a></li>
                 {% else %}
-                <li><a href="{% url 'registration_register' %}" style="color: silver">Sign Up</a></li>
-                <li><a href="{%  url  'auth_login' %}" style="color: silver">Login</a></li>
+                <li><a href="{% url 'registration_register' %}" style="color: silver"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                <li><a href="{%  url  'auth_login' %}" style="color: silver"><i class="fas fa-user"></i> Login</a></li>
              {% endif %}
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
-<img src="{% static 'site/iiita.png' %}" style="position: absolute; top:50%; left: 50%; transform:translate(-50%, -50%); opacity: 0.2;">
 
 <div class="container-fluid">
     {% block content %}
