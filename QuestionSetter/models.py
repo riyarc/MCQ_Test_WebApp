@@ -25,6 +25,6 @@ class Question(models.Model):
         return obj.answer
 
     def __str__(self):
-        return (str(self.question_id) + ".> "  + self.question_text +  "-------------------(problem difficulty is " + self.diff_level+")")
+        return (self.question_text +  "-------------------(problem difficulty is " + self.diff_level+")")
         
     

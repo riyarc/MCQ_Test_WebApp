@@ -60,8 +60,12 @@ def show_marks(request, test_id):
         print(question)
         question_score = question.marks
         answer = answer_array[i]
-        if answer != 'c':
+        if answer != 'c0':
             solutions.append((i + 1, question, answer, eval(f'question.{answer}'), eval(f'question.{question.answer}')))
+           
+        if answer == 'c0':
+            solutions.append((i + 1, question, answer, "No Selection Made" , eval(f'question.{question.answer}')))
+        
         if answer == question.answer:
             total_marks = total_marks + question_score
             correct_ans += 1

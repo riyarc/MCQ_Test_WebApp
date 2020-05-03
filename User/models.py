@@ -107,4 +107,4 @@ class UsersTest(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.test) + " <===> " + str(self.contestant)
+        return str(self.test) + " is created for " + str(self.contestant)

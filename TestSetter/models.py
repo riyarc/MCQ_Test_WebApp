@@ -8,8 +8,6 @@ class Test(models.Model):
     test_url = models.CharField(max_length = 20, default = '')
 
 
-
-
     def __str__(self):
         return str(self.test_id + " " + self.name)
 
