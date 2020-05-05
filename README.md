@@ -13,69 +13,48 @@ This is an MCQ test portal for conducting MCQ tests online.
 
 ## Installation Procedure
 
-1. In terminal cd to the MCQ_Test_WebApp.
+1. Download the project or clone it from github https://github.com/riya-rc/MCQ_Test_WebApp and unzip it.
+2. In terminal cd to the MCQ_Test_WebApp.
 ```
 cd MCQ_Test_WebApp
 ```
-2. Run these commands in terminal.
+3. Run these commands in terminal.
 ```
  pip install -r requirements.txt
- python manage.py migrate
  python manage.py makemigrations
  python manage.py migrate
  ```
  
-3. Start server using this command in terminal 
+4. Start server using this command in terminal 
 ```
 python manage.py runserver
 ```
+5. Now go to http://127.0.0.1:8000/ 
 
 ## Steps to run the project
 Follow these steps to run the project
 
-### 1. Enter into the portal
-After starting the portal a development server will start.
-```
-base dir path /home/meghna_batra/Videos/MCQ_Test_WebApp/static
-base dir path /home/meghna_batra/Videos/MCQ_Test_WebApp/static
-Performing system checks...
+### 1. Create Admin
+1. Create admin by "python manage.py createsuperuser" and enter your details.
 
-System check identified no issues (0 silenced).
-May 03, 2020 - 20:34:49
-Django version 1.11.25, using settings 'MCQ_Portal.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
+### 2. Login through admin login page
+1. Go to http://127.0.0.1:8000/admin and login as superuser.
 
-```
-Enter the URL displayed here into the web browser and this redirect to the home page of the website.
-### 2. Create Admin
-Create admin by entering this command in terminal
-```
-python manage.py createsuperuser
-```
-### 3. Login through admin login page
-To go to the admin login.Add "/admin" in the URL.
-For Example, here the URL is "http://127.0.0.1:8000/" , so to access admin login the URL will be
-```
-http://127.0.0.1:8000/admin
-```
-Now enter the admin login credentials in the login page.
-### 4. Create Question-Setters and Test Setters
+### 3. Create Question-Setters and Test Setters
 
-1. Click on groups and then click on add groups.
+1. Create users by clicking on groups and then add groups.
 2. Create a group giving the permissions accordingly.
-3. Then from the homepage, Click on users, and then click on add users.
-4. Create username and password for the new user and click on save.
-5. Then add groups for the user and check the staff status.
-6. Save the changes and new question-setter/Test setter accordingly ad they can login from the same login page as admin.
+3. Add users by clicking on users and adding the details.
+4. Then add groups for the user and check the staff status.
+6. Save the changes and new question-setter/Test setter accordingly and can login from the same admin interface.
 
-### 5. Create Questions
+### 4. Create Questions
 
 1. Click on Questions.
 2. Click on Add Questions.
 3. Enter the details of the question and click on SAVE.
 
-### 6. Create Test
+### 5. Create Test
 
 #### Creating a new test
 
@@ -91,17 +70,20 @@ Now enter the admin login credentials in the login page.
 2. Click on Add Associatinos.
 3. Select the question and the Test that is to be associated and save.
 
+### 6. Add the users as contestants
+
+1. Click on contestants and add users, who are eligible of giving tests.
+
 ### 7. Adding Users to give Test
 
 To add the Users that are egigible to give the test:
 
 1. Click on Users Test
 2. Click on add Users Test 
-3. Select the user , and test and enter the start time of the test and Save  
+3. Select the user, and test and enter the start time of the test and Save  
 
 ### 8. Attempt the test
 
 1. Enter into the Home Page of the website.
 2. Login using the contestant credentials.
 3. Start the test and click on submit after finishing the test.
-
