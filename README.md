@@ -7,7 +7,7 @@ This is an MCQ test portal for conducting MCQ tests online.
 2. The permissions of all the users can be changed by the admin.
 3. Admin has access to all the features of other users.
 4. Question-setters can add new questions and can edit and delete them.
-5. Test-setters create tests ,associate questions with the test,add test's starting time and then add contestants that are eligible for that test.
+5. Test-setters create tests, associate questions with the test,add test's starting time and then add contestants that are eligible for that test.
 6. Contestants can Login into the portal and once they click on start test, the timer will start.
 7. The progress of the user is saved even if the browser gets closed due to any technical glitch.
 
