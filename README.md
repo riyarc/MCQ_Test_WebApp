@@ -56,7 +56,7 @@ Follow these steps to run the project
 
 ### 5. Create Test
 
-#### Creating a new test
+#### 1. Creating a new test
 
 1. Click on Test.
 2. Click on Add test.
@@ -64,7 +64,7 @@ Follow these steps to run the project
 4. Test URL should be the format "tests/test_id" where test id is the test id entered.
 5. Save the Test.
 
-#### Associating questions to the test
+#### 2. Associating questions to the test
 
 1. Click on Associations.
 2. Click on Add Associatinos.
