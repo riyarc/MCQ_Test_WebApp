@@ -35,7 +35,10 @@ python manage.py runserver
 Follow these steps to run the project
 
 ### 1. Create Admin
-1. Create admin by "python manage.py createsuperuser" and enter your details.
+1. Create admin by running the following command and enter the details.
+```
+python manage.py createsuperuser
+```
 
 ### 2. Login through admin login page
 1. Go to http://127.0.0.1:8000/admin and login as superuser.
