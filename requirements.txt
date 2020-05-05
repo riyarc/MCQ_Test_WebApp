@@ -3,6 +3,5 @@ confusable-homoglyphs==3.2.0
 Django==1.11.25
 django-crispy-forms==1.7.2
 django-registration==2.4.1
-pkg-resources==0.0.0
 pytz==2019.3
 sqlparse==0.3.0
